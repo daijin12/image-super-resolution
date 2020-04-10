@@ -1,4 +1,8 @@
 import tensorflow as tf
+config = tf.ConfigProto()
+config.gpu_options.allow_growth = True
+session = tf.Session(config=config)
+
 from keras.initializers import RandomUniform
 from keras.layers import UpSampling2D, concatenate, Input, Activation, Add, Conv2D, Lambda
 from keras.models import Model
