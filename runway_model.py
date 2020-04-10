@@ -7,7 +7,7 @@ from ISR.models import RDN, RRDN
 def setup(opts):
     print("Checkpoint: ", opts["checkpoint"])
     if "C4" in opts['checkpoint']:
-        rdn  = RRDN(arch_params={'C':4, 'D':3, 'G':64, 'G0':64, 'T':10, 'x':4})
+        rdn  = RRDN(arch_params={'C':4, 'D':3, 'G':64, 'G0':64, 'T':10, 'x':4}, patch_size=40)
     elif "C6" in opts["checkpoint"]:
         rdn = RDN(arch_params={'C':6, 'D':20, 'G':64, 'G0':64, 'x':2})
     else:
