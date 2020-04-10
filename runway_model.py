@@ -1,11 +1,16 @@
 import runway
 import numpy as np
-from ISR.models import RDN
+from ISR.models import RDN, RRDN
 
 
 @runway.setup(options={'checkpoint': runway.file(extension='.hdf5')})
 def setup(opts):
-    rdn = RDN(arch_params={'C':6, 'D':20, 'G':64, 'G0':64, 'x':2})
+    if "C4" in opts['checkpoint']:
+        rrdn  = RRDN(arch_params={'C':4, 'D':3, 'G':64, 'G0':64, 'T':10})
+    elif "C6" in opts["checkpoint"]:
+        rdn = RDN(arch_params={'C':6, 'D':20, 'G':64, 'G0':64, 'x':2})
+    else:
+        rdn = RDN(arch_params={'C':3, 'D':10, 'G':64, 'G0':64, 'x':2})
     rdn.model.load_weights(opts['checkpoint'])
     return rdn
     
