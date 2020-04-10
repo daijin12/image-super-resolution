@@ -5,7 +5,7 @@ from ISR.models import RDN, RRDN
 
 @runway.setup(options={'checkpoint': runway.file(extension='.hdf5')})
 def setup(opts):
-    print("Checkpoints: ", opts["checkpoint"])
+    print("Checkpoint: ", opts["checkpoint"])
     if "C4" in opts['checkpoint']:
         rdn  = RRDN(arch_params={'C':4, 'D':3, 'G':64, 'G0':64, 'T':10, 'x':4})
     elif "C6" in opts["checkpoint"]:
